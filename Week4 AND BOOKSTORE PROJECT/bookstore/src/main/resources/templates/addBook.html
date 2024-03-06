@@ -4,13 +4,14 @@
 <head>
     <title>addBook</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
 </head>
 
 <body>
 
 
     <h1>Add sbook</h1>
-    <div>
+    <div >
         <form th:object="${book}" th:action="@{save}" action="#" method="post">
             <label for="title">Title:</label>
             <input type="text" th:field="*{title}" required="required" />

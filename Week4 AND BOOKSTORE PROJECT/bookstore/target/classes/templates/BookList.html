@@ -1,21 +1,33 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
     <title>BookList</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
 </head>
+
 <body>
-	<h1>Books</h1>
-    <table>
-		<tr>
-		    <th>Title</th>
-		    <th>Author</th>
+
+    <h1>Books</h1>
+
+    <span sec:authentication="principal.username">Username</span>
+
+
+
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out" />
+        </form>
+
+    <table class="table table-striped">
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
             <th>Year</th>
-		    <th>ISBN</th>
+            <th>ISBN</th>
             <th>Price</th>
             <th>Category</th>
-		   
-		</tr>  
+            <th sec:authorize="hasAuthority('ADMIN')"> </th>
+        </tr>
         <tr th:each="book : ${books}">
             <td th:text="${book.title}"></td>
             <td th:text="${book.author}"></td>
@@ -23,13 +35,11 @@
             <td th:text="${book.isbn}"></td>
             <td th:text="${book.price}"></td>
             <td th:text="${book.category.categoryName}"></td>
-            <td>
-                <a th:href="@{/delete/{id}(id=${book.id})}">Delete</a>
-                <a th:href="@{/edit/{id}(id=${book.id})}">Edit</a>
-
-            </td>
-        </tr>
-     </table>    	
-     <a href="/add" class="btn btn-primary">Add Student</a>
+            <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-xs btn-danger">Delete</a></td>  
+            <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/edit/{id}(id=${book.id})}" class="btn btn-xs btn-danger">Edit</a></td>    		  		
+    	
+    </table>
+    <a href="/add" class="btn btn-primary">Add Student</a>
 </body>
+
 </html>
