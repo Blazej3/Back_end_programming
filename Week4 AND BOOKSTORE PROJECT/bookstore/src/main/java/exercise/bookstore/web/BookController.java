@@ -42,7 +42,7 @@ public class BookController {
     }
 
     // save changes
-    @SuppressWarnings("null")
+   
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String save(Book book) {
         repository.save(book);

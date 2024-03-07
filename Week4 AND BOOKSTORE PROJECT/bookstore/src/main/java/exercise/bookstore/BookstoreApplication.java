@@ -47,8 +47,8 @@ c_repository.save(category4);
 			repository.save(new Book("The Hitchhiker's Guide to the Galaxy", "Douglas Adams", 1979, "978-0-345-39181-3", 11.49, category3));
 			repository.save(new Book("The Joy of Cooking", "Irma S. Rombauer", 1931, "978-0-7432-4626-2", 25.99, category4));
 
-			AppUser user1 = new AppUser("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6","abc@gmail.com", "USER");
-			AppUser user2 = new AppUser("admin", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C","def@gmail.com", "ADMIN");
+			AppUser user1 = new AppUser("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6","user1@gmail.com", "USER");
+			AppUser user2 = new AppUser("admin", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C","user2@gmail.com", "ADMIN");
 			urepository.save(user1);
 			urepository.save(user2);
 
