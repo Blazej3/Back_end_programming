@@ -23,13 +23,23 @@ public class WebSecurityConfig {
 	@Bean
 	public SecurityFilterChain configure(HttpSecurity http) throws Exception {
 
-		http.authorizeHttpRequests(
-				authorize -> authorize.requestMatchers(antMatcher("/css/**")).permitAll().anyRequest().authenticated())
-				.headers(headers -> headers.frameOptions(frameOptions -> frameOptions
-						.disable()))
+		http.authorizeHttpRequests(authorize -> authorize
+		.requestMatchers(antMatcher("/css/**")).permitAll()
+		.requestMatchers(antMatcher("/signup")).permitAll()
+		.requestMatchers(antMatcher("/saveuser")).permitAll()
+		.anyRequest().authenticated())
+
+		.headers(headers -> headers
+				.frameOptions(frameOptions -> 
+				frameOptions.disable()))
+
 				.formLogin(
-						formlogin -> formlogin.loginPage("/login").defaultSuccessUrl("/Booklist", true).permitAll())
-				.logout(logout -> logout.permitAll());
+						formlogin -> formlogin
+						.loginPage("/login")
+						.defaultSuccessUrl("/Booklist", true)
+						.permitAll())
+				.logout(logout -> logout
+						.permitAll());
 
 		return http.build();
 	}
