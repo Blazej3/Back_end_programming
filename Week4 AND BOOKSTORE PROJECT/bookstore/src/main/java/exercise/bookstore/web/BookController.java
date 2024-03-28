@@ -20,7 +20,7 @@ public class BookController {
     @Autowired
     private Categoryrepository c_repository;
 
-    // Show all students
+    // login page
     @RequestMapping(value = "/login")
     public String login() {
         return "login.html";
